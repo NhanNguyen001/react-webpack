@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-// import App from './App';
-import LoadableApp from "./LoadableApp";
+import LoadableApp from "./component/LoadableApp";
 import reportWebVitals from './reportWebVitals';
+
+// For styling
+import './index.scss';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -17,11 +19,11 @@ root.render(
 reportWebVitals();
 
 if (module.hot && process.env.NODE_ENV === "development") {
-  module.hot.accept("./App", () => {
-    const NextApp = require("./LoadableApp").default;
+  module.hot.accept("./pages/HomePage", () => {
+    const NextApp = require("./component/LoadableApp").default;
     root.render(
       <React.StrictMode>
-        <App />
+        <LoadableApp />
       </React.StrictMode>,
     );
   });
