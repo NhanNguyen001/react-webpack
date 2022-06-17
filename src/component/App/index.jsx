@@ -7,6 +7,8 @@ import SideBar from "../SideBar";
 
 import "./index.scss";
 
+const { Content } = Layout;
+
 function App() {
     const topics = ["First topic", "Second topic", "Third topic"];
     const [contentIndex, setContentIndex] = useState(0);
@@ -24,15 +26,15 @@ function App() {
         />
     );
     return (
-        <div className="App">
-            <NavBar menu={Menu} />
-            <Layout>
-                <SideBar menu={Menu} />
-                <Layout.Content className="content">
-                    {topics[contentIndex]}
-                </Layout.Content>
-            </Layout>
-        </div>
+        <Layout style={{ height:"100vh" }}>
+            <SideBar menu={Menu} />
+            {/* <Content className="content">
+                {topics[contentIndex]}
+            </Content> */}
+        </Layout>
+        // <div className="App">
+        // <NavBar menu={Menu} />
+        // </div>
     );
 }
 
