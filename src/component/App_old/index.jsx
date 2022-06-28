@@ -1,14 +1,11 @@
 import React, { useState } from "react";
 import { Layout } from "antd";
 
-// import TopicMenu from "../TopicMenu";
-import MenuList from "../MenuList";
+import TopicMenu from "../TopicMenu";
 import NavBar from "../NavBar";
 import SideBar from "../SideBar";
 
 import "./index.scss";
-
-// const Dotenv = require('dotenv-webpack');
 
 function App() {
     const topics = ["First topic", "Second topic", "Third topic"];
@@ -21,7 +18,11 @@ function App() {
     };
 
     const Menu = (
-        <MenuList />
+        <TopicMenu
+            topics={topics}
+            selectedKey={selectedKey}
+            changeSelectedKey={changeSelectedKey}
+        />
     );
 
     return (

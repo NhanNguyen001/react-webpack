@@ -1,5 +1,4 @@
 const path = require("path");
-const webpack = require("webpack");
 const { merge } = require("webpack-merge");
 
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -7,8 +6,12 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const modeConfiguration = env => require(`./build-utils/webpack.${env}`)(env);
 
-module.exports = ({ mode } = { mode: "production" }) => {
+const Dotenv = require('dotenv-webpack');
+
+module.exports = ({ mode, env } = { mode: "production" }) => {
     console.log(`mode is: ${mode}`);
+
+    const envPath = `.env.${mode}`;
 
     return merge(
         {
@@ -61,7 +64,9 @@ module.exports = ({ mode } = { mode: "production" }) => {
                     template: path.resolve(__dirname, './public/index.html'),
                     favicon: path.resolve(__dirname, './public/favicon.ico')
                 }),
-
+                new Dotenv({
+                    path: envPath
+                })
             ]
         },
         modeConfiguration(mode)
