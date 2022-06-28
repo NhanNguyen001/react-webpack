@@ -8,7 +8,7 @@ const modeConfiguration = env => require(`./build-utils/webpack.${env}`)(env);
 
 const Dotenv = require('dotenv-webpack');
 
-module.exports = ({ mode, env } = { mode: "production" }) => {
+module.exports = ({ mode } = { mode: "production" }) => {
     console.log(`mode is: ${mode}`);
 
     const envPath = `.env.${mode}`;
@@ -64,9 +64,7 @@ module.exports = ({ mode, env } = { mode: "production" }) => {
                     template: path.resolve(__dirname, './public/index.html'),
                     favicon: path.resolve(__dirname, './public/favicon.ico')
                 }),
-                new Dotenv({
-                    path: envPath
-                })
+                new Dotenv({ path: envPath })
             ]
         },
         modeConfiguration(mode)
